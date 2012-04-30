@@ -4,5 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :menu_chapter
   def menu_chapter
     @top_chapters = Category.all
+    @link = Link.new
+    @categories = Category.all.collect {|p| [ p.name, p.id ] }
   end
 end

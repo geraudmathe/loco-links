@@ -1,27 +1,29 @@
-= form_for(@link) do |f|
-  - if @link.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@link.errors.count, "error")
-        prohibited this link from being saved:
-      %ul
-        - @link.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name, :required=>:required
-  .field
-    = f.label :url
-    %br/
-    = f.url_field :url, :required=>:required
-  .field
-    = label_tag :is_chapter
-    %br/
-    = check_box_tag :is_chapter
-  .field#cat_select
-    = f.label :category
-    %br/
-    = f.select :category_id, options_for_select(@categories), {:include_blank => '-----'}, :required=>:required
-  .actions
-    = f.submit
+= form_for(@link,:html=>{:class=>"form-horizontal"}) do |f|
+  .modal-header
+    %button.close{"data-dismiss" => "modal"} ×
+    %h3 Add a new Link
+  .modal-body
+    %fieldset
+      - if @link.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@link.errors.count, "error")
+            prohibited this link from being saved:
+          %ul
+            - @link.errors.full_messages.each do |msg|
+              %li= msg
+      .control-group
+        = f.label :name, :class => "control-label"
+        .controls
+          = f.text_field :name, :required=>:required
+      .control-group
+        = f.label :url, :class => "control-label"
+        .controls
+          = f.url_field :url, :required=>:required
+      .field#cat_select
+        = f.label :category, :class => "control-label"
+        .controls
+          = f.select :category_id, options_for_select(@categories), {:include_blank => '-----'}, :required=>:required
+  .modal-footer
+    f.submit
+

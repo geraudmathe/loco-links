@@ -1,0 +1,15 @@
+%p#notice= notice
+%h1= @category.name.capitalize
+%table.table.table-condensed.table-stripped
+  %thead
+    %tr
+      %th Name
+      %th Url
+  %tbody
+    - @links.each do |l|
+      %tr
+        %td= l.name
+        %td= link_to l.url
+= link_to 'Edit', edit_category_path(@category)
+|
+\#{link_to 'Back', categories_path}

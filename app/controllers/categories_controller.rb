@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.find(params[:id])
-
+    @category = Category.where(:name => params[:id]).first
+    @links = Link.where(:category_id => @category.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @category }

@@ -1,10 +1,11 @@
 %ul.nav
+  %li= link_to "new Item", "#new_event_modal", :data=>{:toggle=>"modal"}
   - @top_chapters.select{ |i| i.chapter==0}.each do |c|
-    %li#menu1.dropdown
-      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#menu#{c.chapter}"}
+    %li.dropdown{:href => "#menu#{c.id}"}
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#menu#{c.id}"}
         = c.name
         %b.caret
       =# link_to h("#{c.name}<b class='caret'></b>"), "/path3",:class=>"dropdown-toggle",:data =>{:toggle=>"dropdown"}
       %ul.dropdown-menu
         - @top_chapters.select{ |i| i.chapter==c.id}.each do |sc|
-          %li= link_to sc.name, "toto"
+          %li= link_to sc.name, category_path(sc.name)
