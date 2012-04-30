@@ -1,0 +1,27 @@
+= form_for(@link) do |f|
+  - if @link.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@link.errors.count, "error")
+        prohibited this link from being saved:
+      %ul
+        - @link.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, :required=>:required
+  .field
+    = f.label :url
+    %br/
+    = f.url_field :url, :required=>:required
+  .field
+    = label_tag :is_chapter
+    %br/
+    = check_box_tag :is_chapter
+  .field#cat_select
+    = f.label :category
+    %br/
+    = f.select :category_id, options_for_select(@categories), {:include_blank => '-----'}, :required=>:required
+  .actions
+    = f.submit

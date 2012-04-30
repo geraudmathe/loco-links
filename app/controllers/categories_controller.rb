@@ -25,7 +25,8 @@ class CategoriesController < ApplicationController
   # GET /categories/new.json
   def new
     @category = Category.new
-
+    @chapters = Category.where(:chapter => 0).collect {|p| [ p.name, p.id ] }
+    p @chapters
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @category }
@@ -41,7 +42,7 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(params[:category])
-
+    @category.chapter = 0 if params[:is_chapter]==1
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }

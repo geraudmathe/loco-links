@@ -22,12 +22,9 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Railslinks
+          %a.brand(href="/") Railslinks
           .container.nav-collapse
-            %ul.nav
-              - @chapters.each do |c|
-                %li= link_to c.name, "/path3"
-
+            = render "menu/menu"
     .container
 
       .row

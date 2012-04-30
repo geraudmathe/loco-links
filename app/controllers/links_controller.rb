@@ -25,7 +25,7 @@ class LinksController < ApplicationController
   # GET /links/new.json
   def new
     @link = Link.new
-
+    @categories = Category.all.collect {|p| [ p.name, p.id ] }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @link }
@@ -35,6 +35,7 @@ class LinksController < ApplicationController
   # GET /links/1/edit
   def edit
     @link = Link.find(params[:id])
+    @categories = Category
   end
 
   # POST /links

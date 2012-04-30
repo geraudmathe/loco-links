@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :menu_chapter
   def menu_chapter
-    @chapters = Category.where( :chapter=>true)
+    @top_chapters = Category.all
   end
 end
