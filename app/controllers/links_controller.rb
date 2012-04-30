@@ -14,7 +14,7 @@ class LinksController < ApplicationController
   # GET /links/1.json
   def show
     @link = Link.find(params[:id])
-
+    @link.update_click
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @link }
@@ -45,7 +45,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { render_action :index, notice: 'Link was successfully created.' }
         format.json { render json: @link, status: :created, location: @link }
       else
         format.html { render action: "new" }
@@ -69,6 +69,7 @@ class LinksController < ApplicationController
       end
     end
   end
+
 
   # DELETE /links/1
   # DELETE /links/1.json

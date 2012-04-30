@@ -9,3 +9,6 @@
       %ul.dropdown-menu
         - @top_chapters.select{ |i| i.chapter==c.id}.each do |sc|
           %li= link_to sc.name, category_path(sc.name)
+  - if current_user
+    %li.pull-right 
+      =link_to "Sign out",logout_path

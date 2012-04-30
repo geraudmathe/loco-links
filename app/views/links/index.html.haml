@@ -1,19 +1,15 @@
 %h1 Listing links
-%table
-  %tr
-    %th Name
-    %th Url
-    %th Category
-    %th
-    %th
-    %th
+%ul.links_list.span9
   - @links.each do |link|
-    %tr
-      %td= link.name
-      %td= link.url
-      %td= link.category.name
-      %td= link_to 'Show', link
-      %td= link_to 'Edit', edit_link_path(link)
-      %td= link_to 'Destroy', link, confirm: 'Are you sure?', method: :delete
-%br/
-= link_to 'New Link', new_link_path
+    %li.link-item
+      .row
+        .span1.click
+          %h2= link.clicks
+        .span7
+          %h4= link.name
+          .row
+            .span5= link.language
+            .span5
+            .span3= link.category.name
+        .span1
+          = link_to 'Visit', link, :class=>"btn btn-large", :target =>"_blank"

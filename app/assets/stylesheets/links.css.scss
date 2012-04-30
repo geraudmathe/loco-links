@@ -1,3 +1,18 @@
 // Place all the styles related to the links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.links_list li{
+  height:60px;
+  list-style-type:none;
+  background: #eeeeee;
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+  margin:10px 0px
+}
+
+.link-item .click{
+  background-color: rgba(97,0,0,.4);
+}
+.link-item .click h2{
+  line-height:60px;
+  text-align:center
+}
