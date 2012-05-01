@@ -1,0 +1,22 @@
+#sign_in_modal.modal.hide.fade
+  .modal-header
+    %button.close{"data-dismiss" => "modal"} ×
+    %h3 Sign in
+  = form_for(resource, :as => resource_name, :url => user_session_path,:html=>{:class=>"form-horizontal"}) do |f|
+    .modal-body
+      %fieldset
+        .control-groups
+          = f.label :email, :class => "control-label"
+          .controls
+            = f.email_field :email
+        .control-groups
+          = f.label :password, :class => "control-label"
+          .controls
+            = f.password_field :password
+        - if devise_mapping.rememberable?
+          %div
+            = f.check_box :remember_me
+            = f.label :remember_me
+    .modal-footer
+      %div= f.submit "Sign in"
+      = render "devise/links"

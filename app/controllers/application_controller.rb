@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
     @link = Link.new
     @categories = Category.all.collect {|p| [ p.name, p.id ] }
   end
+
 end

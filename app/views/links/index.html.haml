@@ -10,6 +10,7 @@
           .row
             .span5= link.language
             .span5
-            .span3= link.category.name
+            - if link.category.present?
+              .span3= link.category.name
         .span1
           = link_to 'Visit', link, :class=>"btn btn-large", :target =>"_blank"
