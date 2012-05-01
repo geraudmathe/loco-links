@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(:version => 20120430201249) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.integer  "chapter"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "chapter"
   end
 
   create_table "links", :force => true do |t|

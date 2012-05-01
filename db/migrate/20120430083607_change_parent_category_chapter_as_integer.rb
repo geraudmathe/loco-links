@@ -1,6 +1,7 @@
 class ChangeParentCategoryChapterAsInteger < ActiveRecord::Migration
   def up
-    change_column :categories,:chapter, :integer
+    remove_column :categories,:chapter
+    add_column :categories,:chapter, :integer
   end
 
   def down
