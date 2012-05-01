@@ -4,6 +4,7 @@ class Link < ActiveRecord::Base
   belongs_to :user
   before_create :zero_clicks
   validates_presence_of :name, :url, :category_id, :user_id
+  
   def update_click
     self.clicks += 1
     self.save!
