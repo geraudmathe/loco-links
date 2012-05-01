@@ -1,17 +1,3 @@
-%ul.nav
-  %li= link_to "new Item", "#new_event_modal", :data=>{:toggle=>"modal"}
-  - @top_chapters.select{ |i| i.chapter==0}.each do |c|
-    %li.dropdown{:href => "#menu#{c.id}"}
-      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#menu#{c.id}"}
-        = c.name
-        %b.caret
-      =# link_to h("#{c.name}<b class='caret'></b>"), "/path3",:class=>"dropdown-toggle",:data =>{:toggle=>"dropdown"}
-      %ul.dropdown-menu
-        - @top_chapters.select{ |i| i.chapter==c.id}.each do |sc|
-          %li= link_to sc.name, category_path(sc.name)
 %ul.nav.pull-right
-  - if current_user
-    %li
-      =link_to "Sign out",logout_path
-  - else
     %li= link_to "Sign in", "#sign_in_modal", :data=>{:toggle=>"modal"}
+    %li= link_to "Sign up", "#sign_up_modal", :data=>{:toggle=>"modal"}

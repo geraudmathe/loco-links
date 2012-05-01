@@ -10,9 +10,10 @@ Railslinks::Application.routes.draw do
   resources :categories, :links
 
   namespace :admin do
-    resources :links
+    resources :links, :users
+    get "menu" => "categories#index"
   end
 
-  root :to => 'links#index'
+  root :to => 'admin/links#index'
 
 end

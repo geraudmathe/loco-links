@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  load_and_authorize_resource
   # GET /links
   # GET /links.json
   def index
@@ -42,10 +43,10 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(params[:link])
-
+    @link.user = current_user
     respond_to do |format|
       if @link.save
-        format.html { render_action :index, notice: 'Link was successfully created.' }
+        format.html { redirect_to links_url, notice: 'Link was successfully created.' }
         format.json { render json: @link, status: :created, location: @link }
       else
         format.html { render action: "new" }

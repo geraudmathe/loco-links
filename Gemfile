@@ -9,6 +9,7 @@ gem 'rails', '3.2.2'
 
 
 gem 'devise'
+gem "cancan"
 
 gem "haml"
 gem "haml-rails"

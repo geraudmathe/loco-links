@@ -20,7 +20,10 @@
             %span.icon-bar
           %a.brand(href="/") Railslinks
           .container.nav-collapse
-            = render "menu/menu"
+            -if current_user
+              = render "menu/#{current_user.role}"
+            -else
+              = render "menu/menu"
             
     .container
 
@@ -33,6 +36,8 @@
 
     - unless current_user
       = render "modal/sign_in"
-    = render "modal/new_event"
+      = render "modal/sign_up"
+    -if current_user && current_user.linker?
+      = render "modal/new_event"
     = javascript_include_tag "application"
  

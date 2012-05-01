@@ -1,0 +1,28 @@
+#sign_up_modal.modal.hide.fade
+  .modal-header
+    %button.close{"data-dismiss" => "modal"} ×
+    %h3 Sign up
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      .modal-body
+        %fieldset
+        = devise_error_messages!
+        .control-groups
+          = f.label :nickname, :class => "control-label"
+          .controls
+            = f.text_field :nickname
+        .control-groups
+          = f.label :email, :class => "control-label"
+          .controls
+            = f.email_field :email
+        .control-groups
+          = f.label :password, :class => "control-label"
+          .controls
+            = f.password_field :password
+        .control-groups
+          = f.label :password_confirmation, :class => "control-label"
+          .controls
+            = f.password_field :password_confirmation
+          
+      .modal-footer
+        %div= f.submit "Sign Up"
+        = render "devise/links"

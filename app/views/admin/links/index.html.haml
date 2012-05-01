@@ -1,0 +1,26 @@
+%h1 Dashboard
+%h3 Links to validate
+.row
+  .span4
+    %p Add borders around the entire table and rounded corners for aesthetic purposes.
+  #to_validate_list.span8
+    %table.table.table-stripped.table-condensed
+      %thead
+        %tr
+          %th #
+          %th name
+          %th Last Name
+          %th Actions
+      %tbody
+        - @links.each do |l|
+          %tr
+            %td= l.id
+            %td= l.name
+            %td=# l.user.name
+            %td 
+              %a.btn.btn-success
+                Validate
+              %a.btn.btn-warning
+                Archive
+              %a.btn.btn-warning
+                Visit
