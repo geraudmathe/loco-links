@@ -1,0 +1,24 @@
+%table.table.table-stripped.table-condensed
+  %thead
+    %tr
+      %th #
+      %th nickname
+      %th email
+      %th links
+      %th role
+      %th Actions
+  %tbody
+    - @users.each do |l|
+      %tr
+        %td= l.id
+        %td= l.nickname
+        %td= l.email
+        %td= l.role
+        %td= l.links.size
+        %td 
+          %a.btn.btn-success
+            Validate
+          %a.btn.btn-warning
+            Archive
+          %a.btn.btn-warning
+            Visit

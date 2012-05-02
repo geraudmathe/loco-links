@@ -1,16 +1,20 @@
 %h1 Listing links
-%ul.links_list.span9
-  - @links.each do |link|
-    %li.link-item
-      .row
-        .span1.click
-          %h2= link.clicks
-        .span7
-          %h4= link.name
-          .row
-            .span5= link.language
-            .span5
-            - if link.category.present?
-              .span3= link.category.name
-        .span1
-          = link_to 'Visit', link, :class=>"btn btn-large", :target =>"_blank"
+.row
+  %ul.links_list.span9
+    - @links.each do |link|
+      %li.link-item
+        .row
+          .span1.click
+            %h2= link.clicks
+          .span7
+            %h4= link.name
+            .row
+              .span5= link.language
+              .span5
+              - if link.category.present?
+                .span3= link.category.name
+          .span1
+            = link_to 'Visit', link, :class=>"btn btn-large", :target =>"_blank"
+  .well.span3
+    %h3
+      Trends links

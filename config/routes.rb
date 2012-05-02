@@ -7,7 +7,7 @@ Railslinks::Application.routes.draw do
     match 'signup' => 'devise/registrations#new'
   end
 
-  resources :categories, :links
+  resources :links
 
   namespace :admin do
     resources :links, :users
