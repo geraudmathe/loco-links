@@ -32,11 +32,7 @@
     
       %footer
         %p &copy; Company 2012
-
-    - unless current_user
-      = render "modal/sign_in"
-      = render "modal/sign_up"
-    -if current_user && current_user.linker?
-      = render "modal/new_event"
+      - unless current_user
+        = render "modal/new_event"
     = javascript_include_tag "application"
  

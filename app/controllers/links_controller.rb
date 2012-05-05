@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.validated.order("clicks DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +43,6 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(params[:link])
-    @link.user = current_user
     respond_to do |format|
       if @link.save
         format.html { redirect_to links_url, notice: 'Link was successfully created.' }
@@ -81,6 +80,18 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to links_url }
       format.json { head :no_content }
+    end
+  end
+
+  def get_title
+    duplicates = Link.where(:url=>params[:url])
+    begin
+      doc = Nokogiri::HTML(open params[:url])
+      p doc.css('html').first.attributes["lang"]
+      title = doc.css('title').inner_text.gsub(/\r\n?/, "").strip
+      render :json => {url_title: title, exists:duplicates.empty?}
+    rescue
+      render :json => {wrong_url: true, }
     end
   end
 end

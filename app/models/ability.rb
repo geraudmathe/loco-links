@@ -7,11 +7,8 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
-    elsif user.linker?
-      can [:create,:read], Link
     else
-      p "unlogged"
-      can :read, Link
+      can [:create,:read,:get_title], Link
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

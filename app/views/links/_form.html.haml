@@ -4,23 +4,15 @@
     %h3 Add a new Link
   .modal-body
     %fieldset
-      - if @link.errors.any?
-        #error_explanation
-          %h2
-            = pluralize(@link.errors.count, "error")
-            prohibited this link from being saved:
-          %ul
-            - @link.errors.full_messages.each do |msg|
-              %li= msg
-      .control-group
+      #nameGroup.control-group
         = f.label :name, :class => "control-label"
         .controls
           = f.text_field :name, :required=>:required
-      .control-group
+      #urlGroup.control-group
         = f.label :url, :class => "control-label"
         .controls
           = f.url_field :url, :required=>:required
-      .control-group
+      #languageGroup.control-group
         = f.label :language, :class => "control-label"
         .controls
           = f.radio_button :language, :fr
@@ -29,7 +21,7 @@
           = image_tag "flags/Uk.png", :class => "flag_form"
           = f.radio_button :language, :sp
           = image_tag "flags/Spain.png", :class => "flag_form"
-      .field#cat_select
+      #categoryGroup.field#cat_select
         = f.label :category, :class => "control-label"
         .controls
           = f.select :category_id, options_for_select(@categories), {:include_blank => '-----'}, :required=>:required

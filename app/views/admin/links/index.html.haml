@@ -1,26 +1,75 @@
-%h1 Dashboard
-%h3 Links to validate
-.row
-  .span4
-    %p Add borders around the entire table and rounded corners for aesthetic purposes.
-  #to_validate_list.span8
-    %table.table.table-stripped.table-condensed
-      %thead
-        %tr
-          %th #
-          %th name
-          %th Last Name
-          %th Actions
-      %tbody
-        - @links.each do |l|
-          %tr
-            %td= l.id
-            %td= l.name
-            %td=# l.user.name
-            %td 
-              %a.btn.btn-success
-                Validate
-              %a.btn.btn-warning
-                Archive
-              %a.btn.btn-warning
-                Visit
+%h1 Links
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href => "#waiting_links",:data=>{:toggle=>"tab"}} Waiting validation
+  %li
+    %a{:href => "#valid_links",:data=>{:toggle=>"tab"}} Valid links
+  %li
+    %a{:href => "#invalid_links",:data=>{:toggle=>"tab"}} Not Valid links
+.tab-content
+  #Waiting_links.tab-pane.active
+    .row
+      .span12
+        %table.table.table-stripped.table-condensed
+          %thead
+            %tr
+              %th #
+              %th name
+              %th Last Name
+              %th Actions
+          %tbody
+            - @waiting_links.each do |l|
+              %tr
+                %td= l.id
+                %td= l.name
+                %td 
+                  %a.btn.btn-success{:href=>"#{validate_admin_link_path(l.id)}"}
+                    Validate
+                  %a.btn.btn-warning{:href=>"#{unvalidate_admin_link_path(l.id)}"}
+                    Unvalidate
+  #valid_links.tab-pane
+    .row
+      .span12
+        %table.table.table-stripped.table-condensed
+          %thead
+            %tr
+              %th.span1 #
+              %th.span4 name
+              %th.span4 Url
+              %th.span3 Actions
+          %tbody
+            - @valid_links.each do |l|
+              %tr
+                %td= l.id
+                %td= l.name
+                %td= l.url
+                %td 
+                  %a.btn.btn-success
+                    Validate
+                  %a.btn.btn-warning
+                    Archive
+                  %a.btn.btn-warning
+                    Visit
+  #invalid_links.tab-pane
+    .row
+      .span12
+        %table.table.table-stripped.table-condensed
+          %thead
+            %tr
+              %th.span1 #
+              %th.span4 name
+              %th.span4 Url
+              %th.span3 Actions
+          %tbody
+            - @invalid_links.each do |l|
+              %tr
+                %td= l.id
+                %td= l.name
+                %td= l.url
+                %td 
+                  %a.btn.btn-success{:href=>"#{validate_admin_link_path(l.id)}"}
+                    Validate
+                  %a.btn.btn-warning
+                    Archive
+                  %a.btn.btn-warning
+                    Visit

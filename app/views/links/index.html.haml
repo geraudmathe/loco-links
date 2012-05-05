@@ -1,12 +1,12 @@
 %h1 Listing links
 .row
-  %ul.links_list.span9
+  %ul.links_list.span8
     - @links.each do |link|
       %li.link-item
         .row
           .span1.click
             %h2= link.clicks
-          .span7
+          .span6
             %h4= link.name
             .row
               .span5= link.language

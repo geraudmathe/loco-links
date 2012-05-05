@@ -1,17 +1,21 @@
 Railslinks::Application.routes.draw do
   devise_for :users
 
-  devise_scope :user do
-    match 'login' => 'devise/sessions#new'
-    match 'logout' => 'devise/sessions#destroy'
-    match 'signup' => 'devise/registrations#new'
+
+  resources :links do
+    collection do 
+      get "get_title"
+    end
   end
 
-  resources :links
-
   namespace :admin do
-    resources :links, :users
-    get "menu" => "categories#index"
+    resources :users, :categories
+    resources :links do
+      member do 
+        get 'validate'
+        get 'unvalidate'
+      end
+    end
   end
 
   root :to => 'admin/links#index'

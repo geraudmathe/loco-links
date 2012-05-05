@@ -13,12 +13,14 @@ gem "cancan"
 
 gem "haml"
 gem "haml-rails"
+gem 'nokogiri'
 # Gems used only for assets and not required
 # in production environments by default.
 
 group :development,:test do
   gem 'sqlite3'
-  gem "guard"
+  gem "rspec"
+  gem "guard-rspec"
 end
 
 group :production do 
