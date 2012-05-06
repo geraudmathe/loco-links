@@ -26,13 +26,11 @@
               = render "menu/menu"
             
     .container
-
-      .row
-        = yield
+      = yield
     
       %footer
         %p &copy; Company 2012
       - unless current_user
-        = render "modal/new_event"
+        = render "modal/new_link"
     = javascript_include_tag "application"
  

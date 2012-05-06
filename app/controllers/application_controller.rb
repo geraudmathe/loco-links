@@ -6,9 +6,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :menu_chapter
   def menu_chapter
-    @top_chapters = Category.all
+    categories = Category.all
     @link = Link.new
-    @categories = Category.all.collect {|p| [ p.name, p.id ] }
+    @categories = categories.collect {|p| [ p.name, p.id ] }
+    optGgroup = categories
+    @top_chapters = categories
   end
 
 

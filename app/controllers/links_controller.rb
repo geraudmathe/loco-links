@@ -3,8 +3,8 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.validated.order("clicks DESC")
-
+    @links = Link.validated.order("created_at DESC")
+    @trends_links = Link.validated.order("clicks DESC").limit(5)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }

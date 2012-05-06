@@ -2,17 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .links_list li{
-  height:60px;
+  height:70px;
   list-style-type:none;
-  background: #eeeeee;
-  background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
-  margin:10px 0px
+  margin:10px 0px;
+background: rgb(239,239,239); /* Old browsers */
+background: -moz-linear-gradient(45deg,  rgba(239,239,239,1) 0%, rgba(246,246,246,1) 47%, rgba(186,186,186,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(239,239,239,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(186,186,186,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(186,186,186,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(186,186,186,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(186,186,186,1) 100%); /* IE10+ */
+background: linear-gradient(45deg,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(186,186,186,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#bababa',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+border-top-right-radius:7px;
 }
 
+
+
 .link-item .click{
-  background-color: rgba(97,0,0,.4);
+  background-color: #E2E2E2;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E2E2E2), color-stop(100%, #FAFAFA));
+background-image: -webkit-linear-gradient(top, #E2E2E2, #FAFAFA);
+background-image: -moz-linear-gradient(top, #E2E2E2, #FAFAFA);
+background-image: -ms-linear-gradient(top, #E2E2E2, #FAFAFA);
+background-image: -o-linear-gradient(top, #E2E2E2, #FAFAFA);
+background-image: linear-gradient(top, #E2E2E2, #FAFAFA);
+border-bottom: 1px solid #E7E7E7;
+border-left: 1px solid #EAEAEA;
+border-right: 1px solid #EAEAEA;
+border-top: 1px solid #DFDFDF;
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+margin: 5px 5px 0;
+padding: 10px 10px;
+width:80px
 }
 .link-item .click h2{
-  line-height:60px;
+  line-height:30px;
   text-align:center
+}
+
+.link-item .visit{
+  float: right;
+  margin: 15px;
+}
+
+.link-item h4{
+  font-size: 19px;
+  font-family: Helvetica;
+  margin: 4px;
+  text-shadow: -1px -1px white, 1px 1px #999;
+}
+
+.link-item .link-language{
+  float: right;
+  width: 20px;
 }

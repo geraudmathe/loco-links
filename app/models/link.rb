@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
   belongs_to :category
   before_create :zero_clicks
   validates_presence_of :name, :url, :category_id
-  validates_uniqueness_of :url
+  #validates_uniqueness_of :url
   scope :validated, where(:validated=>true)
   scope :unvalidated, where(:validated=>false)
   scope :waiting, where(:validated=>nil)

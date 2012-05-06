@@ -1,20 +1,26 @@
-%h1 Listing links
+%h1 Last links
 .row
   %ul.links_list.span8
     - @links.each do |link|
-      %li.link-item
-        .row
-          .span1.click
-            %h2= link.clicks
-          .span6
-            %h4= link.name
-            .row
-              .span5= link.language
-              .span5
-              - if link.category.present?
-                .span3= link.category.name
-          .span1
-            = link_to 'Visit', link, :class=>"btn btn-large", :target =>"_blank"
-  .well.span3
-    %h3
-      Trends links
+      %li.link-item.row
+        .span2.click
+          %h2= link.clicks
+        .span5
+          %h4
+            = link.name
+
+          .span3
+            - if link.category.present?
+              = link.category.name
+            -if link.language.present?
+              = image_tag "flags/#{link.language}.png", :class => "link-language"
+        .span1.visit
+         
+          = link_to 'Visit', link, :class=>"btn btn-large", :target =>"_blank"
+  .span4
+    .well
+      %h3
+        Trends
+      %ul
+        - @trends_links.each do |tl|
+          %li= link_to "#{tl.name}(#{tl.clicks})", tl

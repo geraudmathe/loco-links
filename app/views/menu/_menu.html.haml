@@ -9,4 +9,4 @@
         - @top_chapters.select{ |i| i.chapter==c.id}.each do |sc|
           %li= link_to sc.name, admin_categories_path(sc.name)
 %ul.nav.pull-right
-  %li= link_to "new Item", "#new_event_modal", :data=>{:toggle=>"modal"}
+  %li= link_to "Add a link", "#new_link_modal", :data=>{:toggle=>"modal"}

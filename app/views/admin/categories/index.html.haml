@@ -1,8 +1,5 @@
 %h1 Listing categories
 
-%h3 Navbar Examples
-
-
 %table
   %tr
     %th Name
@@ -16,8 +13,22 @@
     - else
       %tr.sub-chapter
     %td= category.name
-    %td= category.chapter
-    %td= link_to 'Edit', edit_admin_category_path(category)
-    %td= link_to 'Destroy', admin_category_path(category), confirm: 'Are you sure?', method: :delete
 %br/
+%ul.chapters-listing
+  - @categories.select{ |i| i.chapter==0}.each do |c|
+    %li.dropdown{:href => "#menu#{c.id}"}
+      %h3= c.name
+      (
+      = link_to 'Edit', edit_admin_category_path(c)
+      = link_to 'Destroy', admin_category_path(c), confirm: 'Are you sure?', method: :delete
+      )
+      %ul.sub-chapters-listing
+        - @categories.select{ |i| i.chapter==c.id}.each do |sc|
+          %li
+            = link_to sc.name, admin_categories_path(sc.name)
+            .actionOnCat
+              = link_to 'Edit', edit_admin_category_path(sc)
+              = link_to 'Destroy', admin_category_path(sc), confirm: 'Are you sure?', method: :delete
+
+
 = link_to 'New Category', new_admin_category_path
