@@ -18,7 +18,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="/") Railslinks
+          %a.brand(href="/") Locomotive links
           .container.nav-collapse
             -if current_user
               = render "menu/#{current_user.role}"
@@ -29,7 +29,6 @@
       = yield
     
       %footer
-        %p &copy; Company 2012
       - unless current_user
         = render "modal/new_link"
     = javascript_include_tag "application"
